@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>EVO NFT</title>
+        <meta name="description" content="An epic NFT created, designed and published by EVO">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="loader">
+            <div class="loader-wrapper">
+                <div class="loader-line"></div>
+                <div class="loader-line"></div>
+                <div class="loader-line"></div>
+                <div class="loader-line"></div>
+                <div class="loader-line"></div>
+            </div>
+        </div>
+        <div id="app">
+            <navbar @mouseover="navbarHover" @mouseleave="navbarHover">
+            </navbar>
+            <header id="header">
+                <img class="header-preview" src="img/header-preview.png" :alt="config.name+' Preview Header'">
+                <h1 class="header-title" :data-text="config.nft_name">{{ config.nft_name }}</h1>
+                <h2 class="header-description">{{ config.description }}</h2>
+                <button v-if="config.launch.time < config.launch.diff" @click="launched(config.launch.link)">{{ config.launch.text }}</button>
+                <button v-else><span><i class="fas fa-bullhorn"></i> Mint countdown</span> {{ config.launch.text }}</button>
+            </header>
+            <div id="vision-spacer"></div>
+            <section id="vision">
+                <div class="vision-wrapper">
+                    <div class="vision-list">
+                        <vision-item v-for="vision in config.visions" :vision="vision">
+                        </vision-item>
+                    </div>
+                    <img class="vision-preview" src="img/vision-preview.png" :alt="config.name+' Preview Vision'">
+                </div>
+            </section>
+            <div id="timeline-spacer"></div>
+            <section id="timeline">
+                <div class="timeline-wrapper">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-list">
+                        <timeline-item v-for="timeline in config.timeline" :item="timeline">
+                        </timeline-item>
+                    </div>
+                </div>
+            </section>
+            <div id="team-spacer"></div>
+            <section id="team">
+                <div class="team-wrapper">
+                    <h2 class="team-title">{{config.nft_name}} Team</h2>
+                    <div class="team-list">
+                        <team-member v-for="member in config.team" :member="member">
+                        </team-member>
+                    </div>
+                </div>
+            </section>
+            <div id="faq-spacer"></div>
+            <section id="faq">
+                <div class="faq-wrapper">
+                    <h2 class="faq-title">FAQ</h2>
+                    <div class="faq-list">
+                        <faq-item v-for="faq in config.faq" :faq="faq">
+                        </faq-item>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="info">
+                    <p class="copyright">
+                        © 2022 {{ config.name }} - Powered by <a href="https://solana.com/" class="link" style="color:magenta;">Solana</a>.
+                    </p>
+                </div>
+            </footer>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+        <script src="https://www.unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+        <script src="https://unpkg.com/vue@3.2.29/dist/vue.global.prod.js"></script>
+        <script src="js/app.js" async defer></script>
+    </body>
+</html>
